@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Title Page</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- My Own CSS -->
+        <link rel="stylesheet" type="text/css" href="safe.css">
+       
+    </head>
+    <body>
+        <div id="pageLoadingModal" class="progress-modal">
+            <div class="modal-content">
+                
+                <img src="/Shared/images/Wipers_rain_Loading.gif" />
+            </div>
+        </div>
+    
+    <div id="waitingModal" class="modal progress-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            
+            <img src="/Shared/images/Wipers_rain_Loading.gif" />
+        </div>
+    </div>
+
+    <header id="siteHeader" class="container" role="banner" aria-label="header">
+        <div class="row">
+            <div class="col-sm-4 col-xs-7">
+                <a href="safelitecopy.html">
+                    <a href="safelitecopy.html"><img src="bootstrap/img/logo/bla bla car.jpeg" class="sml"></a>
+                </a>
+            </div>
+            <div class="col-sm-offset-3 col-sm-5 col-xs-5">
+                <div class="row">
+                    <div class="col-xs-12">
+                        
+                        <div id="smallContainer">
+                            <div id="smallChatButton" class="smallChatButton"></div>
+                            <div id="liveagent_invite_button_573a0000000CwAm"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="siteHeaderMenu">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="progress-area percent-12-completed">
+        <div class="empty-bar"></div>
+        <div class="full-bar-outer"></div>
+        <div class="container">
+            <div class="padded-area">
+                <div class="full-bar-inner"></div>
+                <div class="milestone percent-25"><div></div></div>
+                <div class="milestone percent-50"><div></div></div>
+                <div class="milestone percent-75"><div></div></div>
+                <div class="milestone percent-100"><div></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-container">
+        
+    </div>
+    <main role="main" aria-label="main content">
+        <form method="post" action="./VehicleDamage.aspx" id="aspnetForm" role="form">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTE1NjU4NDgwMmRkAMIkE6csrhCrYz5Sb2JB38uuHM0=" />
+</div>
+
+<div class="aspNetHidden">
+
+    <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="2AABC9D8" />
+</div>
+            <section id="primaryContent" class="container" role="region" aria-label="section primary">
+                
+<div id="MasterPageGlobalMessage" class="globalMessage " role="alert">  
+    
+</div>
+                
+    <input type="hidden" name="hidViewModel" data-bind="textInput: postModel" />
+    <div class="row">
+        <div class="col-sm-8 col-md-7">
+            <h1 id="pageTitle">Tell us about your vehicle</h1>
+            <p class="pageInstructions">
+                Find your vehicle by entering the year, make, model and style or you can enter the vehicle identification number (VIN) to select your vehicle.
+            </p>
+        </div>
+    </div>
+    
+    <div data-bind="slideVisible: displayVehicleSelection">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="sub-header-nav">
+                    <ul class="clearfix">
+                        <li data-bind="css: { active: displayInputType() === displayInputTypeEnum.YMMS }, click: logYmmsRadio">
+                            <label>
+                                <input id="lookup-form-ymms" type="radio" name="lookup-form"
+                                    data-bind="checked: displayInputType, value: displayInputTypeEnum.YMMS">
+                                    Year, Make, Model &amp; Style
+                            </label>
+                        </li>
+                        
+                        <li data-bind="css: { active: displayInputType() === displayInputTypeEnum.VIN }, click: logVinRadio">
+                            <label>
+                                <input id="lookup-form-vin" type="radio" name="lookup-form"
+                                    data-bind="checked: displayInputType, value: displayInputTypeEnum.VIN">
+                                    VIN
+                            </label>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                
+                <div style="display:none;" data-bind="visible: displayVinInput">
+                    <sps-vin2part params="vin: Vin, callInit: false, disabled: disableChooseVehicle, label: 'Enter your VIN', showVin: shouldInputBeVisible, click: vinClick, callback: vinCallback, api: componentApi, vinAttempted: vinAttempted, vinFieldIsEmpty: vinFieldIsEmpty, hasWarnings: vinHasWarnings, hasErrors: vinHasErrors"></sps-vin2part>
+                </div>
+                
+                <div style="display:none;" data-bind="visible: displayYmmsInput">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group has-feedback">
+                                <label for="vehYear" class="control-label">Year</label>
+                                <select class="form-control required" name="vehYear" id="vehYear" data-bind="disable: disableChooseVehicle, options: YearList, optionsCaption: 'Select year'"></select>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group has-feedback">
+                                <label for="vehMake" class="control-label">Make</label>
+                                <select class="form-control required" name="vehMake" id="vehMake" data-bind="disable: disableChooseVehicle, options: MakeList"></select>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group has-feedback">
+                                <label for="vehModel" class="control-label">Model</label>
+                                <select class="form-control required" name="vehModel" id="vehModel" data-bind="disable: disableChooseVehicle, options: ModelList"></select>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group has-feedback bottom-element">
+                                <label for="vehStyle" class="control-label">Style</label>
+                                <select class="form-control required" name="vehStyle" id="vehStyle" data-bind="options: BodyStyleList"></select>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="vin-help-container veh-damage" style="display:none" data-bind="visible: displayVinInput">
+                    <p class="margin-bottom-sm">
+                        <a class="vin-help-btn" href="#" data-bind="click: toggleVinHelp">Where is my VIN?</a>
+                    </p>
+                    <div class="vin-help" style="display: none">
+                        <p>Your VIN can be found in two locations on the drivers side: bottom corner of the windshield and on the door jamb. It's also on your vehicle registration card.</p>
+                        <div class="vin-diagram left"></div>
+                    </div>
+                </div>
+            </div>
+       </div>
+
+        
+        <div class="row" data-bind="slideVisible: displayProblemVehicleQuestions" style="display: none">
+            <div class="col-sm-8 col-md-7">
+                <hr />
+                <problem-questions params="problemQuestions: problemVehicleQuestions, answerSelected: problemVehicleQuestionAnswerSelected"></problem-questions>
+                <p class="validate-failure" style="margin-top:25px;display:none" data-bind="visible: isErrorProblemQuestions">Please complete these questions about your vehicle</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-bind="slideVisible: displayDamageSelection" style="display: none;">
+
+        
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="vehicle-summary">
+                    <div class="edit-controls" data-bind="visible: !disableChooseVehicle, click: editButtonClicked">
+                        <div>
+                            <img src="/Shared/images/icon-pencil.png" />
+                            <span>edit</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label>Vehicle</label>
+                        <div>
+                            <span data-bind="text: SelectedYear"></span>
+                            <span data-bind="text: SelectedMake"></span>
+                            <span data-bind="text: SelectedModel"></span>
+                        </div>
+                    </div>
+                </div>
+                <h2>Which window is damaged?</h2>
+                <p data-bind="css: { 'validate-failure': isErrorNoCategory }">Select all glass parts that have damage.</p>
+                <ul class="list-group checkbox bottom-element">
+
+                    
+                    <li class="list-group-item has-multiple-options" data-bind="css: {'active': selectedWindshieldCategory, 'validate-failure': isErrorNoCategory, 'validate-child-required': isErrorNoWs, 'validate-replace-part': isErrorNoWsReplace, 'validate-repair-part': isErrorNoWsRepair}">
+                        <label>
+                            <input type="checkbox" data-bind="checked: selectedWindshieldCategory" />
+                            <div class="glass-image-windshield" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                            Windshield
+                        </label>
+                        <ul class="list-group radio repair-replace" data-bind="slideVisible: selectedWindshieldCategory">
+                            <li class="list-group-item" data-bind="visible: hasWindshieldCategory, css: {'active': repairReplaceSelection() === 'replace'}">
+                                <label>
+                                    <input type="radio" name="repair-replace" value="replace" data-bind="checked: repairReplaceSelection" />
+                                    Replace
+                                    <div class="glass-image-replace" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                    <p class="description">
+                                        Is the damage larger than 6&quot; or is it in your line of sight?
+                                    </p>
+                                </label>
+                                <div class="list-group-item-details" data-bind="slideVisible: repairReplaceSelection() === 'replace' && hasMultipleWindshieldGlass()">
+                                    <p data-bind="css: { 'validate-failure': isErrorNoWsReplace }">
+                                        Select all windshield parts that need to be replaced
+                                    </p>
+                                    <ul class="list-group checkbox">
+                                        <li class="list-group-item" data-bind="visible: hasWindshieldSinglePiece, css: {'active': selectedWindshieldSinglePiece}">
+                                            <label>
+                                                <input type="checkbox" data-bind="checked: selectedWindshieldSinglePiece" />
+                                                Single windshield
+                                                    <div class="glass-image-windshield-single"></div>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item" data-bind="visible: hasWindshieldLeftPiece, css: {'active': selectedWindshieldLeftPiece}">
+                                            <label>
+                                                <input type="checkbox" data-bind="checked: selectedWindshieldLeftPiece" />
+                                                Driver's side
+                                                    <div class="glass-image-windshield-split-driver"></div>
+                                            </label>
+                                        </li>
+                                        <li class="list-group-item" data-bind="visible: hasWindshieldRightPiece, css: {'active': selectedWindshieldRightPiece}">
+                                            <label>
+                                                <input type="checkbox" data-bind="checked: selectedWindshieldRightPiece" />
+                                                Passenger's side
+                                                    <div class="glass-image-windshield-split-passenger"></div>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-group-item" data-bind="css: {'active': repairReplaceSelection() === 'repair'}">
+                                <label>
+                                    <input type="radio" name="repair-replace" value="repair" data-bind="checked: repairReplaceSelection" />
+                                    Repair
+                                    <div class="glass-image-repair" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                    <p class="description">
+                                        Does it have 3 or fewer chips or cracks and is the damage under 6 inches?
+                                    </p>
+                                </label>
+                                <div class="repair-details" data-bind="slideVisible: repairReplaceSelection() === 'repair'">
+                                    <p style="text-align: center;" data-bind="css: { 'validate-failure': isErrorNoWsRepair }">How many chips are we repairing?</p>
+                                    <div>
+                                        <div class="chip" data-bind="css: {'active': numberOfChips() === 1}, click: function() { numberOfChips(1); }">
+                                            1
+                                        </div>
+                                        <div class="chip" data-bind="css: {'active': numberOfChips() === 2}, click: function() { numberOfChips(2); }">
+                                            2
+                                        </div>
+                                        <div class="chip" data-bind="css: {'active': numberOfChips() === 3}, click: function() { numberOfChips(3); }">
+                                            3
+                                        </div>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                            </li>
+                        </ul>
+                        <p class="validate-message">No windshield damage selected</p>
+                    </li>
+
+                    
+                    <li class="list-group-item" data-bind="visible: hasBackGlassCategory, css: {'active': selectedBackGlassCategory, 'has-multiple-options': hasMultipleRearGlass, 'warning': repairSelected() && selectedBackGlassCategory(), 'validate-failure': isErrorNoCategory, 'validate-child-required': isErrorNoBack }">
+                        <label>
+                            <input type="checkbox" data-bind="checked: selectedBackGlassCategory" />
+                            <div class="glass-image-rear" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                            Back glass
+                        </label>
+                        <ul class="list-group radio" data-bind="slideVisible: selectedBackGlassCategory() && hasMultipleRearGlass() && !repairSelected()">
+                            <li class="list-group-item" data-bind="visible: hasBackWindshield, css: {'active': stationarySliderSelection() === 'stationary'}">
+                                <label>
+                                    <input type="radio" value="stationary" data-bind="checked: stationarySliderSelection" />
+                                    Stationary
+                                <div class="glass-image-rear-windshield" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                            <li class="list-group-item" data-bind="visible: hasBackWindshieldWithSlider, css: {'active': stationarySliderSelection() === 'slider'}">
+                                <label>
+                                    <input type="radio" value="slider" data-bind="checked: stationarySliderSelection" />
+                                    Glass with slider
+                                <div class="glass-image-rear-slider" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                        </ul>
+                        <p class="validate-message">No back glass selected</p>
+                    </li>
+
+                    
+                    <li class="list-group-item" data-bind="visible: hasDriverSideGlassCategory, css: {'active': selectedDriverSideGlassCategory, 'has-multiple-options': hasMultipleDriverGlass, 'warning': repairSelected() && selectedDriverSideGlassCategory(), 'validate-failure': isErrorNoCategory, 'validate-child-required': isErrorNoDriver}">
+                        <label>
+                            <input type="checkbox" data-bind="checked: selectedDriverSideGlassCategory" />
+                            <div class="glass-image-driver" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                            Driver's side
+                        </label>
+                        <ul class="list-group checkbox" data-bind="slideVisible: selectedDriverSideGlassCategory() && hasMultipleDriverGlass() && !repairSelected()">
+                            <li class="list-group-item" data-bind="visible: hasDriverFrontDoor, css: {'active': selectedDriverFrontDoor}">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: selectedDriverFrontDoor" />
+                                    Front door
+                                <div class="glass-image-driver-front-door" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                            <li class="list-group-item" data-bind="visible: hasDriverRearDoor, css: {'active': selectedDriverRearDoor}">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: selectedDriverRearDoor" />
+                                    Back door
+                                <div class="glass-image-driver-rear-door" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                            <li class="list-group-item" data-bind="visible: hasDriverVent, css: {'active': selectedDriverVent}">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: selectedDriverVent" />
+                                    Vent glass
+                                <div class="glass-image-driver-vent" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                            <li class="list-group-item" data-bind="visible: hasDriverRearQuarter, css: {'active': selectedDriverQuarter}">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: selectedDriverQuarter" />
+                                    Quarter panel
+                                <div class="glass-image-driver-quarter" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                            <li class="list-group-item" data-bind="visible: hasDriverSlidingDoor, css: {'active': selectedDriverSlidingDoor}">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: selectedDriverSlidingDoor" />
+                                    Sliding door
+                                <div class="glass-image-driver-sliding-door" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                        </ul>
+                        <p class="validate-message">No driver's side glass selected</p>
+                    </li>
+
+                    
+                    <li class="list-group-item bottom-element" data-bind="visible: hasPassengerSideGlassCategory, css: {'active': selectedPassengerSideGlassCategory, 'has-multiple-options': hasMultiplePassengerGlass, 'warning': repairSelected() && selectedPassengerSideGlassCategory(), 'validate-failure': isErrorNoCategory, 'validate-child-required': isErrorNoPassenger}">
+                        <label>
+                            <input type="checkbox" data-bind="checked: selectedPassengerSideGlassCategory" />
+                            <div class="glass-image-passenger" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                            Passenger's side
+                        </label>
+                        <ul class="list-group checkbox" data-bind="slideVisible: selectedPassengerSideGlassCategory() && hasMultiplePassengerGlass() && !repairSelected()">
+                            <li class="list-group-item" data-bind="visible: hasPassengerFrontDoor, css: {'active': selectedPassengerFrontDoor}">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: selectedPassengerFrontDoor" />
+                                    Front door
+                                <div class="glass-image-passenger-front-door" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                            <li class="list-group-item" data-bind="visible: hasPassengerRearDoor, css: {'active': selectedPassengerRearDoor}">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: selectedPassengerRearDoor" />
+                                    Back door
+                                <div class="glass-image-passenger-rear-door" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                            <li class="list-group-item" data-bind="visible: hasPassengerVent, css: {'active': selectedPassengerVent}">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: selectedPassengerVent" />
+                                    Vent glass
+                                <div class="glass-image-passenger-vent" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                            <li class="list-group-item" data-bind="visible: hasPassengerRearQuarter, css: {'active': selectedPassengerQuarter}">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: selectedPassengerQuarter" />
+                                    Quarter panel
+                                <div class="glass-image-passenger-quarter" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                            <li class="list-group-item" data-bind="visible: hasPassengerSlidingDoor, css: {'active': selectedPassengerSlidingDoor}">
+                                <label>
+                                    <input type="checkbox" data-bind="checked: selectedPassengerSlidingDoor" />
+                                    Sliding door
+                                <div class="glass-image-passenger-sliding-door" data-bind="css: 'glass-image-' + vehicleType()"></div>
+                                </label>
+                            </li>
+                        </ul>
+                        <p class="validate-message">No passenger side glass selected</p>
+                    </li>
+
+                    
+                    <li class="warning alert alert-danger bottom-element" style="display: none" data-bind="slideVisible: !glassCombinationValid()">
+                        <label data-bind="text: glassCombinationErrorHeader"></label>
+                        <p data-bind="text: glassCombinationErrorBody"></p>
+                    </li>
+                </ul>
+                
+            </div>
+            <div class="photo-upload col-sm-5 col-md-4 col-md-offset-1">
+                <hr class="visible-xs" />
+                <div>
+                    <div class="photo-header" data-bind="click: photoHeaderClicked">
+                        <img src="images/camera.png" />
+                        <h3>Not sure of your damage?</h3>
+                        <h3>Send us a photo to review</h3>
+                    </div>
+                    <div class="photo-body" data-bind="css: { expanded: isPhotoUploadExpanded }, enterKeyPress: photoUploadButtonClicked">
+                        <p>
+                            Once you have scheduled your appointment, we will send you a text message so that you can upload your photos (message and data rates may apply) to verify your glass damage and service.
+                        </p>
+                        <div class="form-group has-feedback">
+                            <label class="control-label" for="Phone">Mobile number</label>
+                            <input type="tel" name="Phone" id="Phone" class="phoneUS form-control required ignore" maxlength="20" placeholder="###-###-####" data-bind="textInput: phone, enable: enablePhoneTextbox">
+                            <span class=" form-control-feedback" aria-hidden="true"></span>
+                        </div>
+                        <button class="btn btn-primary" data-bind="visible: displayPhotoUploadButton, click: photoUploadButtonClicked">Send link for photo upload</button>
+                        <div class="edit-phone-button" data-bind="click: editPhoneButtonClicked, style: { visibility: displayEditPhoneButton() ? 'visible' : 'hidden' }">
+                            Edit number
+                            <img src="/shared/images/icon-pencil.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+   
+    <confirmation-modal params="uniqueIdentifier: 'vehicleConfirmationModal',
+                                bodyMarkup: '<h2>Mazda Mobile Start equipment</h2>If your 2016 Mazda is equipped with a Mazda Mobile Start (the ability to start your car with an application on your phone) please understand that Safelite cannot reattach the Mazda Mobile Start equipment when replacing your windshield. A new one has to be purchased and installed at your Mazda dealership.<h2>Please check the box below to acknowledge the following:</h2>',
+                                checkboxText: 'I acknowledge that after the windshield is replaced, Safelite cannot reattach the equipment and I am responsible to remedy this with a Mazda dealership.'">
+    </confirmation-modal>
+
+                
+                
+            </section>
+        <div id="trustmarkContainer" class="container">
+            <div class="row pull-left">
+                
+            </div>
+        </div>
+            <section id="pageNavigation" class="container-fluid" role="region" aria-label="section page navigation">
+                <div class="container">
+                    <div class="row">
+                        
+    <div class="col-xs-8 text-right pull-right">
+        <button data-bind="click: function () { return postPage(navigateDirection.forward) }" type="submit" class="btn btn-success">Continue</button>
+    </div>
+    <div class="col-xs-4">
+        <button data-bind="click: backButtonClicked" type="submit" name="navBack" id="navBack" class="btn btn-link cancel">Back</button>
+    </div>
+
+                    </div>
+                </div>
+            </section>
+        </form>
+        
+    </main>
+    <footer id="pageFooter" role="contentinfo" aria-label="footer">
+        <div class="container">
+            <div class="row">
+                <ul id="footer-bottom">
+                    <li>&copy; 2017 Bla bla Group</li>
+                    <li class="visible-xs">
+                        <!-- force line break on small screen -->
+                    </li>
+                    <li><a href="https://www.safelite.com/terms-of-use/" target="_blank">Terms of use</a></li>
+                    <li><a href="https://www.safelite.com/privacy-policy/" target="_blank">Privacy policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+       <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+ 
+
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+         
+         <script>
+
+        var Blabla = 
+        Blabla.Common._settings.rootUrl = "/";
+        Blabla.Common._settings.serviceUrl = "/External/services";
+
+        
+
+        function buttonCallback(e) {
+            switch (e) {
+                case liveagent.BUTTON_EVENT.BUTTON_AVAILABLE:
+                    if (location.pathname.indexOf("ServiceDetails.aspx") === -1) {
+                        //this should only fire if button is available.
+                       Blabla.Common.pushEventToGoogleDataLayer("Web Chat", "Agent", 'Available', 1);
+                    }
+                    $('body').addClass('webchatEnabled');
+                    isWebChatEnabled = true;
+                    break;
+
+                case liveagent.BUTTON_EVENT.BUTTON_UNAVAILABLE:
+                    Blabla.Common.pushEventToGoogleDataLayer("Web Chat", "Agent", 'Unavailable', 0);
+                    if (!isWebChatAlwaysVisible) $('body').removeClass('webchatEnabled');
+                    isWebChatEnabled = false;
+                    break;
+
+                case liveagent.BUTTON_EVENT.BUTTON_ACCEPTED:
+                   Blabla.Common.pushEventToGoogleDataLayer("Web Chat", "Chat Accept", 'Accepted', 1);
+                    break;
+
+                case liveagent.BUTTON_EVENT.BUTTON_REJECTED:
+                    Blabla.Common.pushEventToGoogleDataLayer("Web Chat", "Chat Accept", 'Rejected', 0);
+                    break;
+            }
+        }
+
+        var laChatId = '573a0000000CwAm';
+        var isWebChatEnabled = false;
+        var isWebChatAlwaysVisible = false;
+
+        function doChat() {
+            $('body').removeClass('webchatEnabled');
+            if (isWebChatEnabled)
+                liveagent.startChat(laChatId);
+            else {
+                Blabla.Common.pushEventToGoogleDataLayer("Web Chat", "Chat Accept", 'Agent Unavailable', 0);
+                $('#chatUnavailableModal').modal('show');
+            }
+        }
+
+        $('#chatButton').click(doChat);
+        $('#smallChatButton').click(doChat);
+        if (isWebChatAlwaysVisible) $('body').addClass('webchatEnabled');
+
+        liveagent.addButtonEventHandler(laChatId, buttonCallback);
+        liveagent.setChatWindowHeight(575);
+        liveagent.setChatWindowWidth(410);
+        liveagent.init('https://d.la2c2.salesforceliveagent.com/chat', '572a00000008jvQ', '00D30000001H7EF');
+        liveagent.addCustomDetail("inputData", JSON.stringify(gtmData));
+          
+        
+    </script>
+    <script src="/FixMyGlass/js/VehicleDamage?v=bS_IyN5cJwYUuuzThtS8ekfni-7B8BWVD6wPf2fyFNg1"></script>
+
+    
+    
+    <script type="text/javascript">
+        Blabla.VehicleDamage.viewModel = {"BailoutCode":null,"BailoutErrorMessage":null,"IsPlateToVinExperiment":false,"EnableVehiclesServiced":false,"ShowVinUpload":false,"DisableChooseVehicle":false,"IsSafa":false,"VehicleSelectedOnPolicyVehiclePage":false,"SelectedYear":"","SelectedMake":"","SelectedModel":"","SelectedBodyStyle":"","CarID":"","CountryCode":"US","LicensePlate":null,"LicenseState":null,"YearList":["2019","2018","2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998","1997","1996","1995","1994","1993","1992","1991","1990","1989","1988","1987","1986","1985","1984","1983","1982","1981","1980","1979","1978","1977","1976","1975","1974","1973","1972","1971","1970","1969","1968","1967","1966","1965","1964","1963","1962","1961","1960","1959","1958","1957","1956","1955","1954","1953","1952","1951","1950","1949"],"MakeList":null,"ModelList":null,"BodyStyleList":null,"StateList":null,"Vin":"","AttemptedVinDecodes":null,"RepairReplaceSelection":null,"NumberOfChips":null,"HasWindshieldCategory":false,"HasBackGlassCategory":false,"HasDriverSideGlassCategory":false,"HasPassengerSideGlassCategory":false,"HasWindshieldLeftPiece":false,"HasWindshieldRightPiece":false,"HasWindshieldSinglePiece":false,"HasBackWindshield":false,"HasBackWindshieldWithSlider":false,"HasDriverFrontDoor":false,"HasDriverRearDoor":false,"HasDriverRearQuarter":false,"HasDriverVent":false,"HasDriverSlidingDoor":false,"HasPassengerFrontDoor":false,"HasPassengerRearDoor":false,"HasPassengerRearQuarter":false,"HasPassengerVent":false,"HasPassengerSlidingDoor":false,"SelectedWindshieldCategory":false,"SelectedBackGlassCategory":false,"SelectedDriverSideGlassCategory":false,"SelectedPassengerSideGlassCategory":false,"SelectedWindshieldSinglePiece":false,"SelectedWindshieldLeftPiece":false,"SelectedWindshieldRightPiece":false,"SelectedBackWindshield":false,"SelectedBackWindshieldWithSlider":false,"SelectedDriverFrontDoor":false,"SelectedDriverQuarter":false,"SelectedDriverRearDoor":false,"SelectedDriverSlidingDoor":false,"SelectedDriverVent":false,"SelectedPassengerFrontDoor":false,"SelectedPassengerQuarter":false,"SelectedPassengerRearDoor":false,"SelectedPassengerSlidingDoor":false,"SelectedPassengerVent":false,"VehicleType":null,"FinalQandAJson":null,"PhotoOptInPhone":"","IsVehicleAcknowlegmentAccepted":false,"ProblemVehicleQuestions":null,"Errors":[],"NavigateDirection":null,"PageTitle":null,"Instructions":null,"IsInCustomerPortal":false,"IsBlabladDotCom":true,"IsSelfService":false,"IsMultiModal":false,"IsCustomerExperienceEnabled":false,"IsInsurance":false,"IsAgencyAdvantageAgentPath":false,"ScriptTextType":null,"DisabledFields":[],"AppName":"BlabladDotCom"};
+    </script>
+    </body>
+</html>
